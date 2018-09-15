@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'grape', '~> 1.1.0'
 gem 'grape-active_model_serializers', '~> 1.5.2'
+gem 'grape-swagger', '~> 0.31.0'
+gem 'grape-swagger-rails', '~> 0.3.0'
 gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do

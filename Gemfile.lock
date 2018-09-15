@@ -114,6 +114,10 @@ GEM
     grape-active_model_serializers (1.5.2)
       active_model_serializers (>= 0.10.0)
       grape (>= 0.8.0)
+    grape-swagger (0.31.0)
+      grape (>= 0.16.2)
+    grape-swagger-rails (0.3.0)
+      railties (>= 3.2.12)
     guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -326,6 +330,8 @@ DEPENDENCIES
   factory_bot_rails
   grape (~> 1.1.0)
   grape-active_model_serializers (~> 1.5.2)
+  grape-swagger (~> 0.31.0)
+  grape-swagger-rails (~> 0.3.0)
   guard-bundler
   guard-rails
   guard-rspec
