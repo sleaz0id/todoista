@@ -4,9 +4,7 @@ module API
       class Show < Base
         desc 'Return a todo'
 
-        params do
-          requires :id, type: String, desc: 'ID of the todo'
-        end
+        params { use :todo_id }
 
         get do
           if @todo

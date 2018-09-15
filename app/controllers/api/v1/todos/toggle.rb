@@ -4,9 +4,7 @@ module API
       class Toggle < Base
         desc "Toggle todo's 'completed' status"
 
-        params do
-          requires :id, type: String, desc: 'ID of the todo'
-        end
+        params { use :todo_id }
 
         patch do
           if @todo

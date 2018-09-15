@@ -3,6 +3,7 @@ module API
     module Todos
       class Base < API::Base
         include API::V1::Defaults
+        helpers API::V1::Todos::Params
 
         namespace :todos do
           mount Index
