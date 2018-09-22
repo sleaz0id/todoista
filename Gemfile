@@ -34,6 +34,12 @@ group :development do
   gem 'guard-shell', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :test do
