@@ -5,12 +5,13 @@ ruby '2.5.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
+gem 'foreman'
 gem 'jbuilder', '~> 2.5'
+gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'
-gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
@@ -37,9 +38,12 @@ group :development do
 
   gem 'capistrano'
   gem 'capistrano-bundler'
+  gem 'capistrano-foreman'
   gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-procfile'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano-yarn'
 end
 
 group :test do
