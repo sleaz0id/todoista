@@ -2,7 +2,7 @@
   "name": "todo-redux",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://web:3001",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "lodash": "^4.17.10",

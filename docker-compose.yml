@@ -4,17 +4,28 @@ volumes:
   postgres_data: {}
 
 services:
+  client:
+    build:
+      context: .
+    depends_on:
+      - web
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/src:/var/www/todoista/client/src
+    restart: always
+    command: bash -c "yarn --cwd client start"
   web:
     build:
       context: .
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - .:/app
     restart: always
-    command: bash -c "rm -f tmp/pids/server.pid && yarn && bundle exec rails s -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && yarn install && bundle exec rails s -b '0.0.0.0' -p 3001"
   db:
     image: postgres
     volumes:
