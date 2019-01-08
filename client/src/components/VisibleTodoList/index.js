@@ -7,11 +7,11 @@ import {
   Loader,
 } from 'semantic-ui-react';
 
-import * as actions from '../actions';
-import { getVisibleTodos, getErrorMessage, getIsFetching } from '../reducers';
+import * as actions from '../../actions';
+import { getVisibleTodos, getErrorMessage, getIsFetching } from '../../reducers';
 
-import { TodoList } from './TodoList';
-import FetchError from './FetchError';
+import { TodoList } from '../TodoList';
+import FetchError from '../FetchError';
 
 class VisibleTodoList extends Component {
   componentDidMount() {

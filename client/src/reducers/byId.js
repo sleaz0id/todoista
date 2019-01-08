@@ -1,6 +1,5 @@
 const byId = (state = {}, action) => {
   if (action.response) {
-    console.log(action);
     return {
       ...state,
       ...action.response.entities.todos,

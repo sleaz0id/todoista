@@ -6,10 +6,8 @@ export const Todo = ({
   onClick,
   completed,
   text,
-  key,
 }) => (
   <Segment 
-    key={key}
     onClick={onClick}
     style={{
       textDecoration:

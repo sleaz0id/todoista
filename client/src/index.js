@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import configureStore from './configureStore';
-import Root from './components/Root';
+import Root from './Root';
 
 import 'semantic-ui-css/semantic.css'
 import './index.css'

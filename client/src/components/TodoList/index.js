@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react'
 
-import Todo from './Todo';
+import Todo from '../Todo';
 
 export const TodoList = ({
   todos,

@@ -5,9 +5,9 @@ import {
   Header,
   Icon,
 } from 'semantic-ui-react';
-import AddTodo from './AddTodo';
-import VisibleTodoList from './VisibleTodoList';
-import Footer from './Footer';
+import AddTodo from '../../components/AddTodo/';
+import VisibleTodoList from '../../components/VisibleTodoList/';
+import Footer from '../../components/Footer/';
 
 const App = ({ match }) => (
   <div>

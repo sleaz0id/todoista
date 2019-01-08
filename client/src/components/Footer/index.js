@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterLink from './FilterLink';
+import FilterLink from '../FilterLink';
 import { Button } from 'semantic-ui-react';
 
 const Footer = () => (
