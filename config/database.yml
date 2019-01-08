@@ -2,22 +2,18 @@ default: &default
   adapter: postgresql
   encoding: utf8
   username: postgres
+  password:
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
 
 development:
   <<: *default
-  password:
   database: todoista_development 
 
 test:
   <<: *default
   database: todoista_test 
-  password:
 
 production:
   <<: *default
   database: todoista_production
-  username: todoista
-  password: <%= Rails.application.credentials.production[:TODOISTA_DATABASE_PASSWORD] %>
-  host: <%= Rails.application.credentials.production[:TODOISTA_DATABASE_HOST] %>
-  port: <%= Rails.application.credentials.production[:TODOISTA_DATABASE_PORT] %>
