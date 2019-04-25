@@ -10,7 +10,7 @@ const AddTodo = ({ dispatch }) => {
   return (
     <Container>      
       <Input
-        ref={node => { input = node.inputRef }}
+        ref={node => { input = node ? node.inputRef : null }}
       />
       <Button
         basic 
