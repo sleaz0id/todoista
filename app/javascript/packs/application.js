@@ -7,4 +7,19 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-console.log('Hello World from Webpacker')
+import 'babel-polyfill';
+import React from 'react';
+import { render } from 'react-dom';
+
+import 'semantic-ui-css/semantic.css'
+import '../stylesheets/index.css'
+
+import configureStore from './configureStore';
+import Root from './Root';
+
+const store = configureStore();
+
+render(
+  <Root store={store} />,
+  document.getElementById('root')
+);

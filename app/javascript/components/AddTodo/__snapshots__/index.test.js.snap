@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddTodo /> renders properly 1`] = `
+<div
+  className="ui container"
+>
+  <div
+    className="ui input"
+  >
+    <input
+      disabled={undefined}
+      onChange={[Function]}
+      tabIndex={undefined}
+      type="text"
+    />
+  </div>
+  <button
+    className="ui teal basic button"
+    disabled={undefined}
+    onClick={[Function]}
+    role="button"
+    tabIndex={undefined}
+  >
+    Add Todo
+  </button>
+</div>
+`;
