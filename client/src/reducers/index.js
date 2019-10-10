@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import byId, * as fromById from './byId';
+import user, * as fromUser from './user';
 import createList, * as fromList from './createList';
 
 const listByFilter = combineReducers({
@@ -11,6 +12,7 @@ const listByFilter = combineReducers({
 const todos = combineReducers({
   byId,
   listByFilter,
+  user,
 });
 
 export default todos;
@@ -25,3 +27,6 @@ export const getIsFetching = (state, filter) =>
 
 export const getErrorMessage = (state, filter) =>
   fromList.getErrorMessage(state.listByFilter[filter]);
+
+export const getUserToken = state =>
+  fromUser.getToken(state.user);

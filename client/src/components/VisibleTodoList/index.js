@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import {
   Container,
   Dimmer,
@@ -8,7 +8,7 @@ import {
 } from 'semantic-ui-react';
 
 import * as actions from '../../actions';
-import { getVisibleTodos, getErrorMessage, getIsFetching } from '../../reducers';
+import { getVisibleTodos, getErrorMessage, getIsFetching, getUserToken } from '../../reducers';
 
 import { TodoList } from '../TodoList';
 import FetchError from '../FetchError';
@@ -64,6 +64,7 @@ class VisibleTodoList extends Component {
           todos={todos}
           onTodoClick={toggleTodo}
         />
+        <Link to='/login'>Sign up</Link>
       </Container>
     );
   }

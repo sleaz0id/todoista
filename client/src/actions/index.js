@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr';
 import * as schema from './schema'
 import * as api from '../api';
-import { getIsFetching } from '../reducers';
+import { getIsFetching, getUserToken } from '../reducers';
 
 const fetchTodosRequest = (filter) => ({
   type: 'FETCH_TODOS_REQUEST',
@@ -34,23 +34,40 @@ const toggleTodoSuccess = (response) => ({
 })
 
 export const fetchTodos = (filter) => (dispatch, getState) => {
+  const authToken = getUserToken(getState());
   if (getIsFetching(getState(), filter)) {
     return Promise.resolve();
   }
+
   dispatch(fetchTodosRequest(filter));
-  
-  return api.fetchTodos(filter).then(
+
+  return api.fetchTodos(filter, authToken).then(
     response => dispatch(fetchTodosSuccess(filter, response)),
     error => dispatch(fetchTodosFailure(filter, error.message)),
   );
 };
 
-export const addTodo = (text) => (dispatch) =>
-  api.addTodo(text).then(response => 
+export const addTodo = (text) => (dispatch, getState) => {
+  const authToken = getUserToken(getState());
+  return api.addTodo(text, authToken).then(response => 
     dispatch(addTodoSuccess(response))
   );
+}
 
-export const toggleTodo = (id) => (dispatch) =>
-  api.toggleTodo(id).then(
+export const toggleTodo = (id) => (dispatch, getState) => {
+  const authToken = getUserToken(getState());
+
+  return api.toggleTodo(id, authToken).then(
     response => dispatch(toggleTodoSuccess(response))
   );
+}
+
+export const setAuthToken = (token) => ({
+  type: 'SET_AUTH_TOKEN',
+  token,
+})
+
+export const authenticateUser = (payload) => (dispatch) =>
+  api.signIn(payload).then(
+    token => dispatch(setAuthToken(token))
+);
