@@ -5,7 +5,7 @@ ruby '2.5.3'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
 gem "doorkeeper", "~> 5.0"
 gem 'foreman'
 gem 'jbuilder', '~> 2.5'
