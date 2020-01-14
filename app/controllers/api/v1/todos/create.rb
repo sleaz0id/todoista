@@ -10,6 +10,7 @@ module API
 
         post do
           todo = Todo.create(
+            user: current_user,
             text: params[:text],
             completed: false
           )
