@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 module Todos
   class Toggle
+    include Dry::Monads[:result, :try, :do]
     include Dry.Types
     extend Dry::Initializer
-
-    class TodoAuthorshipMismatch < StandardError; end
 
     param :user_id, type: Strict::Integer, reader: :private
     param :todo_id, type: Strict::Integer, reader: :private
 
     def call
-      user = find_user
-      todo = find_todo
-      
-      verify_authorship!(todo, user)
+      user = yield find_user
+      todo = yield find_todo
+
+      yield verify_authorship!(todo, user)
 
       toggle_todo(todo)
     end
@@ -20,19 +21,19 @@ module Todos
     private
 
     def find_user
-      User.find(user_id)
+      Try(ActiveRecord::RecordNotFound) { User.find(user_id) }
     end
 
     def find_todo
-      Todo.find(todo_id)
+      Try(ActiveRecord::RecordNotFound) { Todo.find(todo_id) }
     end
 
     def verify_authorship!(todo, user)
-      raise TodoAuthorshipMismatch if todo.user_id != user.id
+      todo.user_id == user.id ? Success() : Failure(:todo_authorship_mismatch)
     end
 
     def toggle_todo(todo)
-      todo.toggle!
+      Success(todo.toggle!)
     end
   end
 end

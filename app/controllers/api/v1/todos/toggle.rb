@@ -7,7 +7,7 @@ module API
         params { use :todo_id }
 
         patch do
-          if ::Todos::Toggle.new(current_user.id, params[:id]).call
+          if ::Todos::Toggle.new(current_user.id, params[:id]).call.success?
             status :ok
             @todo
           else
