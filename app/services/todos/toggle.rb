@@ -1,11 +1,12 @@
 module Todos
   class Toggle
+    include Dry.Types
+    extend Dry::Initializer
+
     class TodoAuthorshipMismatch < StandardError; end
 
-    def initialize(user_id, todo_id)
-      @user_id = user_id
-      @todo_id = todo_id
-    end
+    param :user_id, type: Strict::Integer, reader: :private
+    param :todo_id, type: Strict::Integer, reader: :private
 
     def call
       user = find_user
@@ -17,8 +18,6 @@ module Todos
     end
 
     private
-
-    attr_reader :user_id, :todo_id
 
     def find_user
       User.find(user_id)
