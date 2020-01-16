@@ -33,7 +33,7 @@ module Todos
     end
 
     def toggle_todo(todo)
-      Success(todo.toggle!)
+      todo.toggle! ? Success(todo) : Failure()
     end
   end
 end

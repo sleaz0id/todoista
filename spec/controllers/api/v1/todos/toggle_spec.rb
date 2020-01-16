@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 describe API::V1::Todos::Toggle, type: :request do
-  subject { patch endpoint, headers: headers }
+  subject { patch endpoint, headers: authenticated_headers }
 
+  let!(:todo) { create(:todo, text: 'foo', completed: false, user: user) }
   let(:endpoint) { "/api/v1/todos/#{todo_id}/toggle" }
-  let(:headers) { { 'Accept' => 'application/vnd.api+json' } }
+  let(:authenticated_headers) { authenticated_headers_for(user) }
   let(:todo_id) { todo.id }
-  let(:todo) { create(:todo, text: 'foo', completed: false) }
+  let(:user) { create(:user) }
 
   let(:response_body) do
     {
@@ -27,7 +28,7 @@ describe API::V1::Todos::Toggle, type: :request do
   end
 
   context 'todo has been completed' do
-    let(:todo) { create(:todo, completed: true) }
+    let(:todo) { create(:todo, completed: true, user: user) }
     let(:response_body) do
       {
         id: todo.id,

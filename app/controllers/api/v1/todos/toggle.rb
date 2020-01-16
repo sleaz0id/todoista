@@ -7,9 +7,10 @@ module API
         params { use :todo_id }
 
         patch do
-          if ::Todos::Toggle.new(current_user.id, params[:id]).call.success?
+          todo = ::Todos::Toggle.new(current_user.id, params[:id]).call.value_or(nil)
+          if todo
             status :ok
-            @todo
+            todo
           else
             status :bad_request
             'Todo toggle failed'
