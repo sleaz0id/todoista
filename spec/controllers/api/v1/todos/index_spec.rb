@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 describe API::V1::Todos::Index, type: :request do
-  subject { get endpoint, headers: headers }
+  subject { get endpoint, headers: authenticated_headers }
 
   let(:endpoint) { '/api/v1/todos' }
-  let(:headers) { { 'Accept' => 'application/vnd.api+json' } }
-  let!(:todo) { create(:todo, text: 'foo') }
+  let(:authenticated_headers) { authenticated_headers_for(user) }
+  let!(:todo) { create(:todo, text: 'foo', user: user) }
+  let!(:user) { create(:user) }
 
   let(:response_body) do
     [

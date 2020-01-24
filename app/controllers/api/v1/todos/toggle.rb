@@ -7,17 +7,13 @@ module API
         params { use :todo_id }
 
         patch do
-          if @todo
-            if @todo.toggle!(:completed)
-              status :ok
-              @todo
-            else
-              status :bad_request
-              'Todo toggle failed'
-            end
+          todo = ::Todos::Toggle.new(current_user.id, params[:id]).call.value_or(nil)
+          if todo
+            status :ok
+            todo
           else
-            status :not_found
-            'Record not found'
+            status :bad_request
+            'Todo toggle failed'
           end
         end
       end

@@ -5,7 +5,7 @@ module API
         desc 'Return all todos'
 
         get do
-          Todo.all
+          current_user.todos
         end
       end
     end
