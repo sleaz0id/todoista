@@ -10,7 +10,7 @@ gem "doorkeeper", "~> 5.0"
 gem 'foreman'
 gem 'jbuilder', '~> 2.5'
 gem 'pg'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'
